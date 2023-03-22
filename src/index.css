@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* Media queries */
+@media (max-width: 1080px) {
+  body {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 87.5%;
+  }
+}
+
+h1 {
+    font-family: 'Inter', sans-serif;
+  }
+
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Other styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
