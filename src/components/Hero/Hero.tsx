@@ -22,7 +22,10 @@ function Hero() {
       windspeed: number;
     };
     daily: {
-      precipitation_probability_max: Array<number>;
+      time: string[];
+      precipitation_probability_max: number[];
+      temperature_2m_max: number[];
+      temperature_2m_min: number[];
     };
   }
 
@@ -55,22 +58,35 @@ function Hero() {
       : '';
     axios.get(url2).then((response2) => {
       setData2(response2.data);
+      console.log(url2);
     });
   }, [data]);
+
+  const maxTempForecast = data2.daily ? (
+    <ul className="mx-2 block space-x-2 lg:flex">
+      {data2.daily.temperature_2m_max.slice(1, 7).map((temp, index) => (
+        <li key={temp}>
+          {data2.daily ? `Max ${data2.daily.time[index + 1]}: ${temp}°C` : null}
+        </li>
+      ))}
+    </ul>
+  ) : null;
 
   return (
     <div
       className="h-[22rem] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${heroImage})` }}
     >
-      <input
-        className="rounded-2xl py-2 pr-3 pl-10 font-semibold text-black placeholder-gray-500 opacity-50 ring-2 ring-gray-300 focus:ring-2 focus:ring-gray-500"
-        type="text"
-        value={location}
-        onChange={(event) => setLocation(event.target.value)}
-        onKeyDown={searchLocation}
-        placeholder="Enter Location"
-      ></input>
+      <div className="flex justify-end">
+        <input
+          className="mr-12 mt-4 w-[129.78px] rounded-2xl py-1 text-center font-semibold text-black placeholder-gray-500 opacity-50 ring-2 ring-gray-300 focus:ring-2 focus:ring-gray-500 md:w-[147px]"
+          type="text"
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          onKeyDown={searchLocation}
+          placeholder="Enter Location"
+        ></input>
+      </div>
       <div className="flex justify-between">
         <div className="relative m-6 flex h-[16rem] w-2/5 flex-col items-center justify-center rounded-lg bg-slate-800 bg-opacity-20">
           <h2 className="absolute top-0 left-0 m-2 font-bold text-white">
@@ -78,27 +94,34 @@ function Hero() {
           </h2>
           <div className="py-16">
             {data2.current_weather ? (
-              <h1 className="text-6xl font-bold text-white">
+              <h1 className="text-4xl font-bold text-white lg:text-6xl">
                 {data2.current_weather.temperature.toFixed(0)}ºC
               </h1>
             ) : null}
           </div>
-          <div className="m-2 flex space-x-4">
-            <div className="flex">
-              <img className="my-2 mr-2" src={`${WindIcon}`} />
+          <div className="m-2 flex justify-center space-x-4">
+            <div className="mx-auto block lg:flex">
+              <img className="my-2 mx-auto h-8 lg:mx-2" src={`${WindIcon}`} />
               <div>
-                <h4 className="text-center text-white">Vento</h4>
+                <h4 className="hidden text-center text-white lg:block">
+                  Vento (km/h)
+                </h4>
                 {data2.current_weather ? (
-                  <h4 className="text-white">
-                    {data2.current_weather.windspeed.toFixed(1)} km/h
+                  <h4 className="text-center text-white">
+                    {data2.current_weather.windspeed.toFixed(1)}{' '}
                   </h4>
                 ) : null}
               </div>
             </div>
-            <div className="flex">
-              <img className="my-2 mr-2" src={`${HumidityIcon}`} />
+            <div className="block lg:flex">
+              <img
+                className="my-2 mx-auto h-8 lg:mx-2"
+                src={`${HumidityIcon}`}
+              />
               <div>
-                <h4 className="text-center text-white">Umidade</h4>
+                <h4 className="hidden text-center text-white lg:block">
+                  Umidade
+                </h4>
                 {data.main ? (
                   <h4 className="text-center text-white">
                     {data.main.humidity}%
@@ -106,10 +129,15 @@ function Hero() {
                 ) : null}
               </div>
             </div>
-            <div className="flex">
-              <img className="my-2 mr-2 text-white" src={`${RainProbIcon}`} />
+            <div className="block lg:flex">
+              <img
+                className="my-2 mx-auto h-8 text-white lg:mx-2"
+                src={`${RainProbIcon}`}
+              />
               <div>
-                <h4 className="text-center text-white">Chuva</h4>
+                <h4 className="hidden text-center text-white lg:block">
+                  Chuva
+                </h4>
                 {data2.daily ? (
                   <h4 className="text-center text-white">
                     {data2.daily.precipitation_probability_max[0]}%
@@ -120,7 +148,9 @@ function Hero() {
           </div>
         </div>
         <div className="m-6 flex h-[16rem] w-3/5 items-center justify-center bg-red-500">
-          previsao
+          <div className="block lg:flex lg:space-x-4">
+            <div>{maxTempForecast}</div>
+          </div>
         </div>
       </div>
     </div>
