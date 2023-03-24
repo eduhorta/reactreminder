@@ -4,6 +4,11 @@ import axios from 'axios';
 import WindIcon from '../../assets/images/icon-wind.png';
 import HumidityIcon from '../../assets/images/icon-humidity.png';
 import RainProbIcon from '../../assets/images/icon-rain-prob.png';
+import SunIcon from '../../assets/images/icon-sun.png';
+import ThunderIcon from '../../assets/images/icon-thunder.png';
+import RainIcon from '../../assets/images/icon-rain.png';
+import CloudIcon from '../../assets/images/icon-cloud.png';
+import SunCloudIcon from '../../assets/images/icon-sun-cloud.png';
 
 function Hero() {
   interface OpenWeather {
@@ -21,7 +26,7 @@ function Hero() {
       temperature: number;
       windspeed: number;
     };
-    daily: {
+    daily?: {
       time: string[];
       precipitation_probability_max: number[];
       temperature_2m_max: number[];
@@ -62,16 +67,57 @@ function Hero() {
     });
   }, [data]);
 
-  const maxTempForecast = data2.daily ? (
-    <ul className="mx-2 block space-x-2 lg:flex">
+  const minMaxTemp = data2.daily ? (
+    <ul className="mx-2 block lg:flex lg:space-x-20">
       {data2.daily.temperature_2m_max.slice(1, 7).map((temp, index) => (
         <li key={temp}>
-          {data2.daily ? `Max ${data2.daily.time[index + 1]}: ${temp}°C` : null}
+          <div className="flex h-fit space-x-12 lg:block lg:space-x-0">
+            <img
+              className="h-8 lg:h-16"
+              src={
+                data2.daily &&
+                (() => {
+                  let iconSrc: string;
+                  const probability =
+                    data2.daily.precipitation_probability_max[index + 1];
+
+                  if (probability > 0 && probability < 25) {
+                    iconSrc = SunCloudIcon;
+                  } else if (probability >= 25 && probability < 50) {
+                    iconSrc = CloudIcon;
+                  } else if (probability >= 50 && probability < 75) {
+                    iconSrc = RainIcon;
+                  } else if (probability >= 75 && probability < 90) {
+                    iconSrc = ThunderIcon;
+                  } else {
+                    iconSrc = SunIcon;
+                  }
+
+                  return iconSrc;
+                })()
+              }
+              alt="Weather Icon"
+            />
+            <div>
+              <h2 className="text-center font-semibold text-white lg:py-8 lg:text-2xl">
+                {data2.daily?.time[index + 1].substring(8, 10)}/
+                {data2.daily?.time[index + 1].substring(5, 7)}
+              </h2>
+
+              <p className="text-center">
+                <span className="text-gray-300 lg:text-lg">
+                  {data2.daily?.temperature_2m_min[index + 1].toFixed(0)}°
+                </span>{' '}
+                <span className="font-semibold text-white lg:text-lg">
+                  {temp.toFixed(0)}°
+                </span>
+              </p>
+            </div>
+          </div>
         </li>
       ))}
     </ul>
   ) : null;
-
   return (
     <div
       className="h-[22rem] bg-cover bg-center bg-no-repeat"
@@ -88,7 +134,7 @@ function Hero() {
         ></input>
       </div>
       <div className="flex justify-between">
-        <div className="relative m-6 flex h-[16rem] w-2/5 flex-col items-center justify-center rounded-lg bg-slate-800 bg-opacity-20">
+        <div className="relative m-6 flex h-[16rem] w-2/5 flex-col items-center justify-center rounded-lg bg-slate-900 bg-opacity-30">
           <h2 className="absolute top-0 left-0 m-2 font-bold text-white">
             {data.name}
           </h2>
@@ -147,10 +193,8 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className="m-6 flex h-[16rem] w-3/5 items-center justify-center bg-red-500">
-          <div className="block lg:flex lg:space-x-4">
-            <div>{maxTempForecast}</div>
-          </div>
+        <div className="bg:opacity-20 m-6 flex h-[16rem] w-3/5 items-center justify-center rounded-lg bg-slate-900 bg-opacity-30">
+          {minMaxTemp}
         </div>
       </div>
     </div>
