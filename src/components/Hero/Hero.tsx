@@ -9,6 +9,7 @@ import ThunderIcon from '../../assets/images/icon-thunder.png';
 import RainIcon from '../../assets/images/icon-rain.png';
 import CloudIcon from '../../assets/images/icon-cloud.png';
 import SunCloudIcon from '../../assets/images/icon-sun-cloud.png';
+import Clock from './Clock';
 
 function Hero() {
   interface OpenWeather {
@@ -68,10 +69,14 @@ function Hero() {
   }, [data]);
 
   const minMaxTemp = data2.daily ? (
-    <ul className="mx-2 block lg:flex lg:space-x-20">
+    <ul className="mx-2 block space-y-2 lg:flex lg:justify-center lg:space-y-0 lg:space-x-20">
       {data2.daily.temperature_2m_max.slice(1, 7).map((temp, index) => (
-        <li key={temp}>
-          <div className="flex h-fit space-x-12 lg:block lg:space-x-0">
+        <li key={index}>
+          <div className="justify-ceneter flex items-center space-x-6 lg:block lg:space-x-0">
+            <h2 className="text-center font-semibold text-white lg:py-8 lg:text-2xl">
+              {data2.daily?.time[index + 1].substring(8, 10)}/
+              {data2.daily?.time[index + 1].substring(5, 7)}
+            </h2>
             <img
               className="h-8 lg:h-16"
               src={
@@ -98,13 +103,8 @@ function Hero() {
               }
               alt="Weather Icon"
             />
-            <div>
-              <h2 className="text-center font-semibold text-white lg:py-8 lg:text-2xl">
-                {data2.daily?.time[index + 1].substring(8, 10)}/
-                {data2.daily?.time[index + 1].substring(5, 7)}
-              </h2>
-
-              <p className="text-center">
+            <div className="lg:block">
+              <p className="flex space-x-2 px-1">
                 <span className="text-gray-300 lg:text-lg">
                   {data2.daily?.temperature_2m_min[index + 1].toFixed(0)}°
                 </span>{' '}
@@ -125,7 +125,7 @@ function Hero() {
     >
       <div className="flex justify-end">
         <input
-          className="mr-12 mt-4 w-[129.78px] rounded-2xl py-1 text-center font-semibold text-black placeholder-gray-500 opacity-50 ring-2 ring-gray-300 focus:ring-2 focus:ring-gray-500 md:w-[147px]"
+          className="mr-6 mt-4 w-[129.78px] rounded-2xl py-1 text-center font-semibold text-black placeholder-gray-500 opacity-50 ring-2 ring-gray-300 focus:ring-2 focus:ring-gray-500 md:w-[147px]"
           type="text"
           value={location}
           onChange={(event) => setLocation(event.target.value)}
@@ -134,17 +134,19 @@ function Hero() {
         ></input>
       </div>
       <div className="flex justify-between">
-        <div className="relative m-6 flex h-[16rem] w-2/5 flex-col items-center justify-center rounded-lg bg-slate-900 bg-opacity-30">
+        <div className="relative m-6 flex h-[16rem] w-2/5 flex-col items-center justify-end rounded-lg bg-slate-900 bg-opacity-30">
           <h2 className="absolute top-0 left-0 m-2 font-bold text-white">
             {data.name}
           </h2>
-          <div className="py-16">
+          <div className="mb-8 text-center">
             {data2.current_weather ? (
               <h1 className="text-4xl font-bold text-white lg:text-6xl">
                 {data2.current_weather.temperature.toFixed(0)}ºC
+                <Clock />
               </h1>
             ) : null}
           </div>
+
           <div className="m-2 flex justify-center space-x-4">
             <div className="mx-auto block lg:flex">
               <img className="my-2 mx-auto h-8 lg:mx-2" src={`${WindIcon}`} />

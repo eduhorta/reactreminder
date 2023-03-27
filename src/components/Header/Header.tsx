@@ -11,7 +11,7 @@ function Header() {
   }
 
   return (
-    <header className="flex items-center justify-between bg-roxo-600 px-12 py-4">
+    <header className="flex items-center justify-between bg-roxo-600 px-6 py-4">
       <Logo />
       <p className="text-white">{number}</p>
       <Button click={increment} title="Adicionar Lembrete" />
