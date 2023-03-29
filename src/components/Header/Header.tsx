@@ -3,18 +3,12 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 
 function Header() {
-  const [number, setNumber] = useState(0);
-
-  function increment() {
-    setNumber(number + 1);
-    console.log(number);
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <header className="flex items-center justify-between bg-roxo-600 px-6 py-4">
       <Logo />
-      <p className="text-white">{number}</p>
-      <Button click={increment} title="Adicionar Lembrete" />
+      <Button title="Adicionar Lembrete" />
     </header>
   );
 }

@@ -195,7 +195,7 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className="bg:opacity-20 m-6 flex h-[16rem] w-3/5 items-center justify-center rounded-lg bg-slate-900 bg-opacity-30">
+        <div className="bg:opacity-20 m-6 flex h-[16rem] w-3/5 items-center justify-center rounded-lg bg-slate-900 bg-opacity-30 lg:w-fit">
           {minMaxTemp}
         </div>
       </div>
