@@ -55,8 +55,8 @@ function Hero() {
       setLocation('');
     }
   };
-  console.log(data);
-  console.log(data2);
+  // console.log(data);
+  // console.log(data2);
 
   useEffect(() => {
     const url2 = data.coord
@@ -64,7 +64,7 @@ function Hero() {
       : '';
     axios.get(url2).then((response2) => {
       setData2(response2.data);
-      console.log(url2);
+      // console.log(url2);
     });
   }, [data]);
 
