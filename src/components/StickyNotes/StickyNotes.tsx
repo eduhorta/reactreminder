@@ -10,12 +10,9 @@ function StickyNotes() {
       </div>
       <div className="mx-2 flex flex-wrap justify-start gap-6">
         {notes.map((notes: any) => (
-          <div
-            key={notes.title}
-            className="flex w-48 flex-wrap items-center justify-center bg-roxo-300"
-          >
-            <h2 className="py-2 text-center">{notes.title}</h2>
-            <p className="mx-2 h-24 overflow-auto break-all text-justify scrollbar-thin">
+          <div key={notes.title} className=" w-48  bg-roxo-300">
+            <h2 className="py-2 text-center font-bold">{notes.title}</h2>
+            <p className="mx-2 h-auto overflow-auto break-all text-justify scrollbar-thin">
               {notes.description}
             </p>
           </div>

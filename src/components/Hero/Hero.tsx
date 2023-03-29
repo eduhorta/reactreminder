@@ -133,7 +133,7 @@ function Hero() {
           placeholder="Enter Location"
         ></input>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-around">
         <div className="relative m-6 flex h-[16rem] w-2/5 flex-col items-center justify-end rounded-lg bg-slate-900 bg-opacity-30">
           <h2 className="absolute top-0 left-0 m-2 font-bold text-white">
             {data.name}
