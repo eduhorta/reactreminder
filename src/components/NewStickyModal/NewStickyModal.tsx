@@ -22,6 +22,7 @@ function NewStickyModal({ onClose }: NewStickyModalProps) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setNotes([...notes, formData]);
     onClose();
   }
 
@@ -40,25 +41,16 @@ function NewStickyModal({ onClose }: NewStickyModalProps) {
               className="border font-bold"
               type="text"
               placeholder="Title"
-              value={stickyTitle}
               onChange={(event) => setStickyTitle(event.target.value)}
               name="title"
             />
           </div>
           <div className="px-4 py-5 sm:p-6">
             <div className="mb-4">
-              <label
-                className="mb-2 block font-bold text-gray-700"
-                htmlFor="note"
-              >
-                Note
-              </label>
+              <label className="mb-2 block font-bold text-gray-700">Note</label>
               <textarea
                 className="focus:shadow-outline w-full resize-none rounded-md border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-                id="note"
-                name="note"
                 rows={3}
-                value={stickyNote}
                 onChange={(event) => setStickyNote(event.target.value)}
                 required
               ></textarea>
@@ -67,7 +59,6 @@ function NewStickyModal({ onClose }: NewStickyModalProps) {
               <button
                 type="submit"
                 className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white focus:outline-none hover:bg-blue-700"
-                onClick={() => setNotes([...notes, formData])}
               >
                 Save
               </button>

@@ -130,7 +130,7 @@ function Hero() {
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyDown={searchLocation}
-          placeholder="Enter Location"
+          placeholder="Digite a cidade"
         ></input>
       </div>
       <div className="flex justify-around">
