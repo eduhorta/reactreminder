@@ -1,15 +1,21 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import NotesContext from '@/hooks/notesContext';
 
+interface NotesProps {
+  title: string;
+  description: string;
+}
+
 function StickyNotes() {
-  interface NotesProps {
-    title: string;
-    description: string;
-  }
-  const { notes, setNotes } = useContext<any>(NotesContext);
+  const { notes, setNotes } = useContext<{
+    notes: NotesProps[];
+    setNotes: React.Dispatch<React.SetStateAction<NotesProps[]>>;
+  }>(NotesContext);
 
   const handleDeleteNote = (title: string) => {
-    const updatedNotes = notes.filter((note: []) => note.title !== title);
+    const updatedNotes = notes.filter(
+      (note: NotesProps) => note.title !== title,
+    );
     setNotes(updatedNotes);
     localStorage.setItem('notes', JSON.stringify(updatedNotes));
   };
