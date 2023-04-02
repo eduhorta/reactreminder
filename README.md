@@ -67,4 +67,3 @@
   </ul> 
   
   <h3>Qualquer dúvida ou sugestão, estou à disposição!</h3>
-](https://github.com/eduhorta/reactreminder)
