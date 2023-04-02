@@ -72,7 +72,7 @@ function Hero() {
     <ul className="mx-2 block space-y-2 lg:flex lg:justify-center lg:space-y-0 lg:space-x-20">
       {data2.daily.temperature_2m_max.slice(1, 7).map((temp, index) => (
         <li key={index}>
-          <div className="justify-ceneter flex items-center space-x-6 lg:block lg:space-x-0">
+          <div className="flex items-center justify-between space-x-2 lg:block lg:space-x-0">
             <h2 className="text-center font-semibold text-white lg:py-8 lg:text-2xl">
               {data2.daily?.time[index + 1].substring(8, 10)}/
               {data2.daily?.time[index + 1].substring(5, 7)}
@@ -130,7 +130,7 @@ function Hero() {
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyDown={searchLocation}
-          placeholder="Digite a cidade"
+          placeholder="Cidade + enter"
         ></input>
       </div>
       <div className="flex justify-around">

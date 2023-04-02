@@ -25,9 +25,9 @@ function StickyNotes() {
       <div className="text-center">
         <h1 className="py-4 text-roxo-600">Lembretes - {notes.length}</h1>
       </div>
-      <div className="mx-2 flex flex-wrap justify-start gap-6">
+      <div className="mx-2 flex flex-wrap justify-center gap-6 pb-4">
         {notes.map((note: NotesProps) => (
-          <div key={note.title} className="relative w-48 bg-roxo-300">
+          <div key={note.title} className="relative w-40 bg-roxo-300 lg:w-48">
             <h2 className="py-2 text-center font-bold">{note.title}</h2>
             <p className="mx-2 h-24 overflow-auto break-all text-justify scrollbar-thin">
               {note.description}
