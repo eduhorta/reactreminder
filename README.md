@@ -1,12 +1,14 @@
 <h1 align="center">React Reminder</h1>
  <h1>Imagens</h1>
  <p align="center">
+ <h2>Versão Mobile</h2>
 <span><image src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen.jpg?raw=true" alt="your-image-description"></span>
  &nbsp; &nbsp;
 <span><image height="766" src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen2.jpg?raw=true" alt="your-image-description"></span>
 </br>
 </br>
 </p>
+<h2>Versão Desktop</h2>
 <image src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/lg-screen.jpg?raw=true" />
 <h2 align="center">Tech Stack</h2>
 <div align="center">
