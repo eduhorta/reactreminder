@@ -59,7 +59,7 @@
     <li>Tailwindcss</li>
     <li>Vite</li>
   </ul>
-  <p>Além disso, a aplicação faz uso de duas APIs gratuitas fornecidas pela OpenWeather e Open-Meteo para fornecer informações de previsão do tempo. Para mais informações sobre essas APIs, consulte os seguintes links:</p>
+  <p>Além disso, a aplicação faz uso de solicitações assíncronas entre as de duas APIs gratuitas para complementar dados e criação da interface. Para mais informações sobre essas APIs, consulte os seguintes links:</p>
   <ul>
     <li><a href="https://openweathermap.org/api">OpenWeather API</a></li>
     <li><a href="https://open-meteo.com/en/docs/api">Open-Meteo API</a></li>
