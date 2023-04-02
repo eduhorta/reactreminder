@@ -4,7 +4,7 @@
  <h2>Versão Mobile</h2>
 <span><image src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen.jpg?raw=true" alt="your-image-description"></span>
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<span><image height="766" src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen2.jpg?raw=true" alt="your-image-description"></span>
+<span><image height="766" width="360" src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen2.jpg?raw=true" alt="your-image-description"></span>
 </br>
 </br>
 </p>
