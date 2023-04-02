@@ -3,7 +3,7 @@
  <p align="center">
  <h2>Versão Mobile</h2>
 <span><image src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen.jpg?raw=true" alt="your-image-description"></span>
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <span><image height="766" src="https://github.com/eduhorta/reactreminder/blob/master/src/assets/images/mobile-screen2.jpg?raw=true" alt="your-image-description"></span>
 </br>
 </br>
@@ -51,8 +51,6 @@
     <li>Push para a branch: git push origin my-feature</li>
     <li>Crie um novo pull request</li>
   </ol>
-  <h2>Licença</h2>
-  MIT License
   <h2>Tecnologias e APIs Utilizadas</h2>
   <p>A aplicação foi desenvolvida utilizando as seguintes tecnologias:</p>
   <ul>
@@ -67,4 +65,5 @@
     <li><a href="https://open-meteo.com/en/docs/api">Open-Meteo API</a></li>
   </ul> 
   
-  <h3>Qualquer dúvida ou sugestão, estou à disposição!</h3>
+  <h2>Licença</h2>
+  MIT License
