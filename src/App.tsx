@@ -3,26 +3,29 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import StickyNotes from './components/StickyNotes/StickyNotes';
 import NotesContext from './hooks/notesContext';
-import Auth from './components/Auth/auth';
+import { Auth } from './components/Auth/auth';
 
 interface NotesProps {
   title: string;
   description: string;
 }
 
-function App() {
-  const [notes, setNotes] = useState<NotesProps[]>(() => {
-    const savedData = localStorage.getItem('notes');
-    return savedData ? JSON.parse(savedData) : [];
-  });
+interface AppProps {
+  db: firebase.firestore.Firestore;
+}
 
-  // Save notes to localStorage whenever notes state changes
+function App({ db }: AppProps) {
+  const [notes, setNotes] = useState<NotesProps[]>([]);
+
   useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(notes));
-  }, [notes]);
+    db.collection('notes').onSnapshot((snapshot) => {
+      const updatedNotes = snapshot.docs.map((doc) => doc.data() as NotesProps);
+      setNotes(updatedNotes);
+    });
+  }, []);
 
   return (
-    <NotesContext.Provider value={{ notes, setNotes }}>
+    <NotesContext.Provider value={{ notes, setNotes, db }}>
       <Header />
       <Auth />
       <Hero />
