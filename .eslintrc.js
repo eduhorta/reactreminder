@@ -31,4 +31,8 @@ module.exports = {
     _: 'writable',
     $: 'writable',
   },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^React$" }]
+  }
+  
 };
