@@ -50,6 +50,7 @@ function NewStickyModal({ onClose }: NewStickyModalProps) {
               <label className="mb-2 block font-bold text-gray-700">Nota</label>
               <textarea
                 className="focus:shadow-outline w-full resize-none rounded-md border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+                placeholder="teste"
                 rows={3}
                 onChange={(event) => setStickyNote(event.target.value)}
                 required

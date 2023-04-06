@@ -149,7 +149,11 @@ function Hero() {
 
           <div className="m-2 flex justify-center space-x-4">
             <div className="mx-auto block lg:flex">
-              <img className="my-2 mx-auto h-8 lg:mx-2" src={`${WindIcon}`} />
+              <img
+                className="my-2 mx-auto h-8 lg:mx-2"
+                alt="imagem1"
+                src={`${WindIcon}`}
+              />
               <div>
                 <h4 className="hidden text-center text-white lg:block">
                   Vento (km/h)
@@ -164,6 +168,7 @@ function Hero() {
             <div className="block lg:flex">
               <img
                 className="my-2 mx-auto h-8 lg:mx-2"
+                alt="imagem2"
                 src={`${HumidityIcon}`}
               />
               <div>
@@ -180,6 +185,7 @@ function Hero() {
             <div className="block lg:flex">
               <img
                 className="my-2 mx-auto h-8 text-white lg:mx-2"
+                alt="imagem3"
                 src={`${RainProbIcon}`}
               />
               <div>

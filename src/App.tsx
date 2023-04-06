@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import StickyNotes from './components/StickyNotes/StickyNotes';
 import NotesContext from './hooks/notesContext';
+import Auth from './components/Auth/auth';
 
 interface NotesProps {
   title: string;
@@ -23,6 +24,7 @@ function App() {
   return (
     <NotesContext.Provider value={{ notes, setNotes }}>
       <Header />
+      <Auth />
       <Hero />
       <StickyNotes />
     </NotesContext.Provider>
