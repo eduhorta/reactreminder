@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import heroImage from '../../assets/images/Hero.png';
 import axios from 'axios';
 import WindIcon from '../../assets/images/icon-wind.png';
 import HumidityIcon from '../../assets/images/icon-humidity.png';
@@ -119,10 +118,7 @@ function Hero() {
     </ul>
   ) : null;
   return (
-    <div
-      className="h-[22rem] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${heroImage})` }}
-    >
+    <div className="h-[22rem] bg-[url('/images/Hero.png')] bg-cover bg-center bg-no-repeat">
       <div className="flex justify-end">
         <input
           className="mr-6 mt-4 w-[129.78px] rounded-2xl py-1 text-center font-semibold text-black placeholder-gray-500 opacity-50 ring-2 ring-gray-300 focus:ring-2 focus:ring-gray-500 md:w-[147px]"
