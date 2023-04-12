@@ -15,7 +15,7 @@ function Clock() {
   return (
     <div>
       <h1 className="text-lg font-semibold text-white">
-        {time.toLocaleTimeString()}
+        {time.toLocaleTimeString([], { hour12: true })}
       </h1>
     </div>
   );

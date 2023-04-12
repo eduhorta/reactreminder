@@ -13,7 +13,7 @@ function Header() {
   return (
     <header className="flex items-center justify-between bg-roxo-600 px-6 py-4">
       <Logo />
-      <Button title="Adicionar Lembrete" onClick={toggleModal} />
+      <Button title="Add Sticky Note" onClick={toggleModal} />
       {isModalOpen && <NewStickyModal onClose={toggleModal} />}
     </header>
   );

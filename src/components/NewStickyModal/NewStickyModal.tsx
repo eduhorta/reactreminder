@@ -35,19 +35,19 @@ function NewStickyModal({ onClose }: NewStickyModalProps) {
               className="mb-2 block font-bold text-gray-700"
               htmlFor="note"
             >
-              Título
+              Title
             </label>
             <input
               className="border font-bold"
               type="text"
-              placeholder="Título"
+              placeholder="Title"
               onChange={(event) => setStickyTitle(event.target.value)}
               name="title"
             />
           </div>
           <div className="px-4 py-5 sm:p-6">
             <div className="mb-4">
-              <label className="mb-2 block font-bold text-gray-700">Nota</label>
+              <label className="mb-2 block font-bold text-gray-700">Note</label>
               <textarea
                 className="focus:shadow-outline w-full resize-none rounded-md border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
                 rows={3}
@@ -60,14 +60,14 @@ function NewStickyModal({ onClose }: NewStickyModalProps) {
                 type="submit"
                 className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white focus:outline-none hover:bg-blue-700"
               >
-                Salvar
+                Save
               </button>
               <button
                 type="button"
                 className="focus:shadow-outline ml-4 rounded bg-gray-500 py-2 px-4 font-bold text-white focus:outline-none hover:bg-gray-700"
                 onClick={onClose}
               >
-                Cancelar
+                Cancel
               </button>
             </div>
           </div>

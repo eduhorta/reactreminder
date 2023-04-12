@@ -41,7 +41,7 @@ function Hero() {
   });
   const [data2, setData2] = useState<Partial<OpenMeteo>>({});
   const [location, setLocation] = useState('');
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location},br&APPID=1a26b8eadf51832de229c54d805a278c`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location},us&APPID=1a26b8eadf51832de229c54d805a278c`;
   const saveDataToLocalStorage = (data: Partial<OpenWeather>) => {
     localStorage.setItem('OpenWeatherData', JSON.stringify(data));
   };
@@ -74,8 +74,8 @@ function Hero() {
         <li key={index}>
           <div className="flex items-center justify-between space-x-2 lg:block lg:space-x-0">
             <h2 className="text-center font-semibold text-white lg:py-8 lg:text-2xl">
-              {data2.daily?.time[index + 1].substring(8, 10)}/
-              {data2.daily?.time[index + 1].substring(5, 7)}
+              {data2.daily?.time[index + 1].substring(5, 7)}/
+              {data2.daily?.time[index + 1].substring(8, 10)}
             </h2>
             <img
               className="h-8 lg:h-16"
@@ -106,10 +106,15 @@ function Hero() {
             <div className="lg:block">
               <p className="flex space-x-2 px-1">
                 <span className="text-gray-300 lg:text-lg">
-                  {data2.daily?.temperature_2m_min[index + 1].toFixed(0)}°
+                  {(
+                    ((data2.daily?.temperature_2m_min[index + 1] ?? 0) * 9) /
+                      5 +
+                    32
+                  )?.toFixed(0)}
+                  °
                 </span>{' '}
                 <span className="font-semibold text-white lg:text-lg">
-                  {temp.toFixed(0)}°
+                  {((temp * 9) / 5 + 32).toFixed(0)}°F
                 </span>
               </p>
             </div>
@@ -130,7 +135,7 @@ function Hero() {
           value={location}
           onChange={(event) => setLocation(event.target.value)}
           onKeyDown={searchLocation}
-          placeholder="Cidade + enter"
+          placeholder="Location + Enter"
         ></input>
       </div>
       <div className="flex justify-around">
@@ -141,7 +146,8 @@ function Hero() {
           <div className="mb-8 text-center">
             {data2.current_weather ? (
               <h1 className="text-4xl font-bold text-white lg:text-6xl">
-                {data2.current_weather.temperature.toFixed(0)}ºC
+                {((data2.current_weather.temperature * 9) / 5 + 32).toFixed(0)}
+                ºF
                 <Clock />
               </h1>
             ) : null}
@@ -152,11 +158,11 @@ function Hero() {
               <img className="my-2 mx-auto h-8 lg:mx-2" src={`${WindIcon}`} />
               <div>
                 <h4 className="hidden text-center text-white lg:block">
-                  Vento (km/h)
+                  Wind (mph)
                 </h4>
                 {data2.current_weather ? (
                   <h4 className="text-center text-white">
-                    {data2.current_weather.windspeed.toFixed(1)}{' '}
+                    {(data2.current_weather.windspeed * 0.621371).toFixed(1)}{' '}
                   </h4>
                 ) : null}
               </div>
@@ -168,7 +174,7 @@ function Hero() {
               />
               <div>
                 <h4 className="hidden text-center text-white lg:block">
-                  Umidade
+                  Humidity
                 </h4>
                 {data.main ? (
                   <h4 className="text-center text-white">
@@ -183,9 +189,7 @@ function Hero() {
                 src={`${RainProbIcon}`}
               />
               <div>
-                <h4 className="hidden text-center text-white lg:block">
-                  Chuva
-                </h4>
+                <h4 className="hidden text-center text-white lg:block">Rain</h4>
                 {data2.daily ? (
                   <h4 className="text-center text-white">
                     {data2.daily.precipitation_probability_max[0]}%
