@@ -114,7 +114,7 @@ function Hero() {
                   °
                 </span>{' '}
                 <span className="font-semibold text-white lg:text-lg">
-                  {((temp * 9) / 5 + 32).toFixed(0)}°F
+                  {((temp * 9) / 5 + 32).toFixed(0)}°
                 </span>
               </p>
             </div>
