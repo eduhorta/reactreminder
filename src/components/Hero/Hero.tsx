@@ -152,7 +152,7 @@ function Hero() {
               </h1>
             ) : null}
           </div>
-
+          {/* Stats of the day */}
           <div className="m-2 flex justify-center space-x-4">
             <div className="mx-auto block lg:flex">
               <img className="my-2 mx-auto h-8 lg:mx-2" src={`${WindIcon}`} />
